@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Type;
 
 
 class Project extends Model
@@ -31,5 +33,12 @@ class Project extends Model
 
 
 
-    protected $fillable = ['title', 'slug', 'thumb', 'description', 'link_github', 'link_project', 'type_id'];
+    protected $fillable = ['title', 'type_id', 'slug', 'thumb', 'description', 'link_github', 'link_project', 'type_id'];
+
+
+
+    public function type(): BelongsTo
+    {
+        return $this->belongsTo(Type::class);
+    }
 }

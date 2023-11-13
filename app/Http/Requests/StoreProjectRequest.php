@@ -24,6 +24,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => 'required|unique:projects|bail|min:3|max:200',
             'thumb' => 'nullable|image|max:300',
+            'type_id' => 'nullable|exists:types,id',
             'description' => 'nullable|bail|min:3|max:500',
             'link_github' => ['nullable', 'bail', 'min:3', 'max:2048'],
             'link_project' => ['nullable', 'bail', 'min:3', 'max:2048'],

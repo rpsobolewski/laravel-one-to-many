@@ -24,6 +24,7 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'type_id' => 'nullable|exists:types,id',
             'title' => ['required',  'min:3', Rule::unique('projects')->ignore($this->project), 'max:200'],
             'thumb' => ['nullable', 'image', 'max:300'],
             'description' => ['nullable', 'bail', 'min:3', 'max:500'],

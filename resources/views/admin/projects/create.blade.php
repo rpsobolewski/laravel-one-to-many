@@ -47,18 +47,24 @@
                     @enderror
 
                 </div>
+
+
+
                 <div class="mb-3">
                     <label for="type_id" class="form-label">Type</label>
-                    <select class="form-selector @error('category_id') is-invalid @enderror" name="type_id" id="type_id">
-                        <option selected disabled>Select a Type</option>
-                        <option value="">No Type</option>
-
-                        @forelse ($types as $type)
-                        <option value="{{$category->id}}" {{$category->id == old('category_id') ? : '' }}>{{$category->name}}</option>
-                        @empty
-
-                        @endforelse
+                    <select class="form-select form-select @error('type_id') is-invalid @enderror" name="type_id" id="type_id">
+                        <option selected>Select a Type</option>
+                        <option value="">Uncategorized</option>
+                        @foreach ($types as $type)
+                        <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
+                            {{ $type->name }}
+                        </option>
+                        @endforeach
                     </select>
+
+                    @error('type_id')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
