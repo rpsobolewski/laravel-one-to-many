@@ -31,5 +31,5 @@ class Project extends Model
 
 
 
-    protected $fillable = ['title', 'slug', 'thumb', 'description', 'link_github', 'link_project'];
+    protected $fillable = ['title', 'slug', 'thumb', 'description', 'link_github', 'link_project', 'type_id'];
 }

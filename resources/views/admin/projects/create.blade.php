@@ -47,10 +47,23 @@
                     @enderror
 
                 </div>
+                <div class="mb-3">
+                    <label for="type_id" class="form-label">Type</label>
+                    <select class="form-selector @error('category_id') is-invalid @enderror" name="type_id" id="type_id">
+                        <option selected disabled>Select a Type</option>
+                        <option value="">No Type</option>
+
+                        @forelse ($types as $type)
+                        <option value="{{$category->id}}" {{$category->id == old('category_id') ? : '' }}>{{$category->name}}</option>
+                        @empty
+
+                        @endforelse
+                    </select>
+                </div>
 
                 <div class="mb-3">
 
-                    <label for="description" class="form-label"><strong>Project Link</strong></label>
+                    <label for="project_link" class="form-label"><strong>Project Link</strong></label>
 
                     <input type="text" class="form-control" name="link_project" id="link_project" aria-describedby="helpTitle" placeholder="New project link">
 
@@ -62,7 +75,7 @@
 
                 <div class="mb-3">
 
-                    <label for="description" class="form-label"><strong>Github Link</strong></label>
+                    <label for="github_link" class="form-label"><strong>Github Link</strong></label>
 
                     <input type="text" class="form-control" name="link_github" id="link_github" aria-describedby="helpTitle" placeholder="New project Github link">
 
