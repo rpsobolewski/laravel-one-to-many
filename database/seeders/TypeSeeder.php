@@ -20,7 +20,7 @@ class TypeSeeder extends Seeder
         $types = ['Programming', 'Fullstack', 'Frontend', 'Backend', 'API'];
 
 
-        foreach ($$types as $type) {
+        foreach ($types as $type) {
             $new_type = new Type();
             $new_type->name = $type;
             $new_type->slug = Str::slug($new_type->name, '-');
